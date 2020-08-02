@@ -15,12 +15,12 @@
     <input id="password" type="password" formControlName="password">
     <div class="validation" *ngIf="form.get('password').touched && form.get('password').invalid">
       <small *ngIf="form.get('password').errors.required">Password field is required</small>
-      <small *ngIf="form.get('password').errors.minlength.actualLength < 6">
+      <small *ngIf="form.get('password').errors.minlength">
         Password mustn't be less than 6 {{form.get('password').errors.minlength.requeredLength}} digits.
         You entered only {{form.get('password').errors.minlength.actualLength}}.
       </small>
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Log in</button>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid || submitted">Log in</button>
 </form>
