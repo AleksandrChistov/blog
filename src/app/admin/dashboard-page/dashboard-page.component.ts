@@ -23,12 +23,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     })
   }
 
-  delete(id: string) {
-    this.dSub = this.postsService.delete(id).subscribe(() => {
-      this.posts = this.posts.filter(post => post.id !== id);
-    });
-  }
-
   ngOnDestroy() {
     if (this.pSub) {
       this.pSub.unsubscribe();
@@ -37,5 +31,11 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     if (this.dSub) {
       this.dSub.unsubscribe();
     }
+  }
+
+  delete(id: string) {
+    this.dSub = this.postsService.delete(id).subscribe(() => {
+      this.posts = this.posts.filter(post => post.id !== id);
+    });
   }
 }
